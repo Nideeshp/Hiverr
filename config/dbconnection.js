@@ -1,4 +1,13 @@
-// const mongoose=require('mongoose')
-// mongoose.connect("mongodb+srv://nideeshnd313:3WsbNk3Mp5cYJCFm@cluster0.ca03c0z.mongodb.net/").then(()=>{
-//     console.log('Mongodb connected')
-// }).catch((err)=>console.log(err))
+const mongoose=require('mongoose')
+
+const connectedDB=async()=>{
+    try {
+        const connect=await mongoose.connect(process.env.MONGO_URL)
+        console.log("MongoDb Connected",connect.connection.host,connect.connection.name);
+    } catch (error) {
+        console.log(error);
+        process.exit(1)
+    }
+}
+
+module.exports=connectedDB
