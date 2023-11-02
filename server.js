@@ -4,6 +4,7 @@ const verifyToken = require('./middleware/verifytoken');
 const cookieParser= require('cookie-parser')
 const app = express()
 require('dotenv').config();
+app.use(cookieParser())
 app.use(express.json())
 const port=process.env.PORT || 8001
 connectedDB()

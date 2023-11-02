@@ -61,6 +61,17 @@ module.exports = {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1hr",
     });
+    res.cookie(String(user._id),token ,{
+        path:'/',
+        expires:new Date(Date.now()+1000*30),
+        httpOnly:true,
+        sameSite:'lax'
+
+    })
+    
+
+
+
     res.json({ message: "Logged in", token });
   }),
 
